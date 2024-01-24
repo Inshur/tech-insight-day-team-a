@@ -1,21 +1,25 @@
 from tkinter import *
 from tkinter.ttk import *
 
+import retrieveOrder as retrieve
+
 main = Tk()
-main.geometry('500x500')
+# main.geometry('1000x1000')
+width, height = main.winfo_screenwidth(), main.winfo_screenheight()
 
-def get_val():
-   entry_val=entrySearchVal.get()
-   labelReturnSearchVal = Label(main, text=entry_val)
-   labelReturnSearchVal.grid(row=3, column=0)
+main.geometry('%dx%d+0+0' % (width,height))
 
-def show():
-   labelReturnSearchBy.config(text = currentSearchBy)
-   labelReturnSearchBy = Label(main, text="order_id")
-   labelReturnSearchBy.grid(row=4, column=0)
+def search():
+   searchBy=dropSearchBy.get()
+   searchVal=entrySearchVal.get()
+   output = retrieve.retrieveOrder(searchBy, searchVal) #searchParameter, Value)
+   labelOutput.config(text=output)
+
+
+
 
 #dropdown search by values
-possibleSearches = ['order_id', 'date', 'restaurant', 'postcode']
+possibleSearches = ['order_id', 'order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number']
 
 labelSearchBy = Label(main, text='Search by: ')
 labelSearchVal = Label(main, text='Search val:')
@@ -24,16 +28,18 @@ currentSearchBy = StringVar()
 currentSearchBy.set('order_id')
 
 dropSearchBy = OptionMenu(main, StringVar(), *possibleSearches)
-# entrySearchBy = Entry(main)
 entrySearchVal = Entry(main)
 
-buttonSearch = Button(main, text='Search', command=get_val)
+buttonSearch = Button(main, text='Search', command=search)
+
+labelOutput = Label(main, text='no output yet')
 
 labelSearchBy.grid(row=0, column=0, sticky=W, pady=4)
 labelSearchVal.grid(row=1, column=0, sticky=W, pady=4)
-dropSearchBy.grid(row=0, column=1, sticky=E, pady=4)
-entrySearchVal.grid(row=1, column=1, sticky=E, pady=4)
+dropSearchBy.grid(row=0, column=1, sticky=W, pady=4)
+entrySearchVal.grid(row=1, column=1, sticky=W, pady=4)
 buttonSearch.grid(row=2, column=0, sticky=W, pady=2)
+labelOutput.grid(row=3, column=0, sticky=W, pady=2)
 
 food_delivery = Treeview(main)
 food_delivery['columns'] = ('order_id', 'date', 'restaurant_name', 'restaurant_id', 'restaurant_postcode', 'dish_id', 'dish_name', 'price', 'total_price', 'delivery_postcode', 'contact_number', 'deliver_by', 'house_number')
@@ -85,3 +91,4 @@ values=('6','ZaqueriBlack','106','Wisconsin' , 'TONY'))
 
 food_delivery.grid(row= 5, column= 0, rowspan=3)
 main.mainloop()
+
