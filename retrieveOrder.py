@@ -24,7 +24,7 @@ def retrieveOrder(searchParameter, Value):
                 #Does not allow for a value ID of less than zero
                 return (False, 'Error: Value can not be below zero')
                 #Returns tuple, the false is for identifying when there is an error string
-            if str(Value) in order.get(searchParameter):
+            if str(Value) == order.get(searchParameter):
                 searched_orders.append(order)
                 #The order is added to the searched_orders list when it is successful
         elif searchParameter == 'date':
@@ -32,12 +32,12 @@ def retrieveOrder(searchParameter, Value):
                 searched_orders.append(order)
         elif searchParameter == 'restaurant':
             restaurant = order.get('restaurant')
-            if Value.lower() in restaurant.get('name'):
+            if Value.lower() in restaurant.get('name').lower():
                 searched_orders.append(order)
         elif searchParameter == 'postcode':
             address = order.get('delivery')
             #Retrieves address first as there is a nested dictionary, repeated later
-            if Value.lower() in address.get('postcode'):
+            if Value.lower() in address.get('postcode').lower():
                 searched_orders.append(order)
         elif searchParameter == 'contact_number':
             address = order.get('delivery')
@@ -55,7 +55,5 @@ def retrieveOrder(searchParameter, Value):
 
 
 #Tests
-print(retrieveOrder('restaurant', 'Burger Bistro'))
-print(retrieveOrder('order_id', 8))
-print(retrieveOrder('postcode', "BN2 5EF"))
-print(retrieveOrder('dish_id', '13123'))
+
+print(retrieveOrder('restaurant', 'Burger'))

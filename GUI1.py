@@ -16,10 +16,15 @@ def callback(selection):
 def search():
    searchVal=entrySearchVal.get()
    output = retrieve.retrieveOrder(currentSearchBy.get(), searchVal) #searchParameter, Value)
-   print(currentSearchBy.get())
+   # print(currentSearchBy.get())
    print(output)
-   labelOutput.config(text=output)
+   # labelOutput.config(text=output)
 
+   # if output[0] == 0
+
+   food_delivery.insert(parent='',index='end',iid=0,text='',
+   values=('1','05-01-2023','101','Burger Bisto', '61340', 'BN2 9US', '16675', 'Classic Cheeseburger', '7.99', '92493', 'Sweet Potato Fries', '3.99', '11,98', 'BN2 5EF', '072442766728', '05-01-2023T19:45:00', '12'))
+   food_delivery.redraw()
 
 
 
@@ -79,20 +84,6 @@ food_delivery.heading("delivery_postcode",text="Delivery Postcode",anchor=CENTER
 food_delivery.heading("contact_number",text="Contact Number",anchor=CENTER)
 food_delivery.heading("deliver_by",text="Deliver By",anchor=CENTER)
 food_delivery.heading("house_number",text="House Number",anchor=CENTER)
-
-
-food_delivery.insert(parent='',index='end',iid=0,text='',
-values=('1','Ninja','101','Oklahoma', 'Moore'))
-food_delivery.insert(parent='',index='end',iid=1,text='',
-values=('2','Ranger','102','Wisconsin', 'Green Bay'))
-food_delivery.insert(parent='',index='end',iid=2,text='',
-values=('3','Deamon','103', 'California', 'Placentia'))
-food_delivery.insert(parent='',index='end',iid=3,text='',
-values=('4','Dragon','104','New York' , 'White Plains'))
-food_delivery.insert(parent='',index='end',iid=4,text='',
-values=('5','CrissCross','105','California', 'San Diego'))
-food_delivery.insert(parent='',index='end',iid=5,text='',
-values=('6','ZaqueriBlack','106','Wisconsin' , 'TONY'))
 
 food_delivery.grid(row= 5, column= 0, rowspan=3)
 main.mainloop()
