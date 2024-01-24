@@ -36,7 +36,11 @@ def retrieveOrder(searchParameter, Value):
             address = order.get('delivery')
             if Value.lower() in address.get('contact_number'):
                 searched_orders.append(order)
-        elif searchParameter == 'house_number'
+        elif searchParameter == 'house_number':
+            address = order.get('delivery')
+            if Value.lower() in address.get('house_number')
+                searched_orders.append('delivery')
+                #test
         else:
             return (False, 'Error: Cannoy be found within data')
     return (True, searched_orders)
@@ -45,4 +49,3 @@ def retrieveOrder(searchParameter, Value):
 print(retrieveOrder('restaurant', 'Burger Bistro'))
 print(retrieveOrder('order_id', 8))
 print(retrieveOrder('postcode', "BN2 5EF"))
-
