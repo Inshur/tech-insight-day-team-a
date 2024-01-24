@@ -38,7 +38,7 @@ def retrieveOrder(searchParameter, Value):
                 searched_orders.append(order)
         elif searchParameter == 'house_number':
             address = order.get('delivery')
-            if Value.lower() in address.get('house_number')
+            if Value.lower() in address.get('house_number'):
                 searched_orders.append('delivery')
                 #test
         else:
