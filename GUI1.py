@@ -9,11 +9,15 @@ width, height = main.winfo_screenwidth(), main.winfo_screenheight()
 
 main.geometry('%dx%d+0+0' % (width,height))
 
+searchBy = 'order_id'
+def callback(selection):
+    searchBy = selection
+
 def search():
-   searchBy=dropSearchBy.get()
    searchVal=entrySearchVal.get()
    output = retrieve.retrieveOrder(searchBy, searchVal) #searchParameter, Value)
-   labelOutput.config(text=output)
+   print(currentSearchBy.get())
+   print(output)
 
 
 
@@ -27,7 +31,7 @@ labelSearchVal = Label(main, text='Search val:')
 currentSearchBy = StringVar()
 currentSearchBy.set('order_id')
 
-dropSearchBy = OptionMenu(main, StringVar(), *possibleSearches)
+dropSearchBy = OptionMenu(main, currentSearchBy, *possibleSearches, command=callback)
 entrySearchVal = Entry(main)
 
 buttonSearch = Button(main, text='Search', command=search)
