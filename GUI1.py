@@ -15,7 +15,7 @@ def callback(selection):
 
 def search():
    searchVal=entrySearchVal.get()
-   output = retrieve.retrieveOrder(searchBy, searchVal) #searchParameter, Value)
+   output = retrieve.retrieveOrder(currentSearchBy.get(), searchVal) #searchParameter, Value)
    print(currentSearchBy.get())
    print(output)
 
