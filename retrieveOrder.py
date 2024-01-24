@@ -32,12 +32,12 @@ def retrieveOrder(searchParameter, Value):
                 searched_orders.append(order)
         elif searchParameter == 'restaurant':
             restaurant = order.get('restaurant')
-            if Value.lower() in restaurant.get('name'):
+            if Value.lower() in restaurant.get('name').lower():
                 searched_orders.append(order)
         elif searchParameter == 'postcode':
             address = order.get('delivery')
             #Retrieves address first as there is a nested dictionary, repeated later
-            if Value.lower() in address.get('postcode'):
+            if Value.lower() in address.get('postcode').lower():
                 searched_orders.append(order)
         elif searchParameter == 'contact_number':
             address = order.get('delivery')
@@ -55,3 +55,5 @@ def retrieveOrder(searchParameter, Value):
 
 
 #Tests
+
+print(retrieveOrder('restaurant', 'Burger'))
