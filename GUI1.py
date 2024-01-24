@@ -15,9 +15,10 @@ def callback(selection):
 
 def search():
    searchVal=entrySearchVal.get()
-   output = retrieve.retrieveOrder(searchBy, searchVal) #searchParameter, Value)
+   output = retrieve.retrieveOrder(currentSearchBy.get(), searchVal) #searchParameter, Value)
    print(currentSearchBy.get())
    print(output)
+   labelOutput.config(text=output)
 
 
 
@@ -36,7 +37,7 @@ entrySearchVal = Entry(main)
 
 buttonSearch = Button(main, text='Search', command=search)
 
-labelOutput = Label(main, text='no output yet')
+labelOutput = Label(main, text='no output yet', wraplength=1000)
 
 labelSearchBy.grid(row=0, column=0, sticky=W, pady=4)
 labelSearchVal.grid(row=1, column=0, sticky=W, pady=4)
