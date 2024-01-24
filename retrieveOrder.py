@@ -12,7 +12,7 @@ orders = response.json()
 orders = orders['data']
 #Takes the successful orders from the JSON file and adds them to a dictionary
 
-possibleSearches = ['order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number', 'dish_id']
+possibleSearches = ['order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number']
 
 #Searched_orders the list that contains all orders that match the search criteria
 searched_orders = []
@@ -47,10 +47,6 @@ def retrieveOrder(searchParameter, Value):
             address = order.get('delivery')
             if Value.lower() in address.get('house_number'):
                 searched_orders.append('delivery')
-        elif searchParameter == 'dish_id':
-            address = order.get('delivery')
-            if Value.lower() in address.get('dish_id'):
-                searched_orders.append.get('dish_id')
         else:
             return (False, 'Error: Cannoy be found within data')
     return (True, searched_orders)
