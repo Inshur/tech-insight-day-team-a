@@ -10,7 +10,7 @@ global searched_orders
 orders = response.json()
 orders = orders['data']
 
-possibleSearches = ['order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number']
+possibleSearches = ['order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number', 'dish_id']
 
 searched_orders = []
 
@@ -38,9 +38,12 @@ def retrieveOrder(searchParameter, Value):
                 searched_orders.append(order)
         elif searchParameter == 'house_number':
             address = order.get('delivery')
-            if Value.lower() in address.get('house_number')
+            if Value.lower() in address.get('house_number'):
                 searched_orders.append('delivery')
-                #test
+        elif searchParameter == 'dish_id':
+            address = order.get('delivery')
+            if Value.lower() in address.get('dish_id'):
+                searched_orders.append.get('dish_id')
         else:
             return (False, 'Error: Cannoy be found within data')
     return (True, searched_orders)
@@ -49,3 +52,4 @@ def retrieveOrder(searchParameter, Value):
 print(retrieveOrder('restaurant', 'Burger Bistro'))
 print(retrieveOrder('order_id', 8))
 print(retrieveOrder('postcode', "BN2 5EF"))
+print(retrieveOrder('dish_id', '13123'))
