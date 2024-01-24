@@ -35,7 +35,7 @@ def search():
 
 
 #dropdown search by values
-possibleSearches = ['order_id', 'order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number']
+possibleSearches = ['order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number']
 
 labelSearchBy = Label(main, text='Search by: ')
 labelSearchVal = Label(main, text='Search val:')
