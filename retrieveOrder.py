@@ -11,22 +11,25 @@ orders = orders['data']
 
 possibleSearches = ['order_id', 'date', 'restaurant', 'postcode']
 
+searched_orders = []
+
 def retrieveOrder(searchParameter, Value):
     for order in orders:
         if searchParameter == 'order_id' or searchParameter == 'date':
-            if order.get(searchParameter) == str(Value):
-                return order
+            if order.get(searchParameter).contains(str(Value)):
+                searched_orders.append(order)
         elif searchParameter == 'restaurant':
             restaurant = order.get('restaurant')
-            if restaurant.get('name') == Value:
-                return order
+            if restaurant.get('name').contains(Value.lower()):
+                searched_orders.append(order)
         elif searchParameter == 'postcode':
             address = order.get('delivery')
-            if address.get('postcode') == Value:
-                return order
+            if address.get('postcode').contains(Value.lower()):
+                searched_orders.append(order)
         else:
             print('Order not in data')
             return 0
+        return searched_orders
 
 
 #print(retrieveOrder('restaurant', 'Burger Bistro'))
