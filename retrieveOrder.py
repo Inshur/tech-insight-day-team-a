@@ -21,7 +21,7 @@ searched_orders = []
 def retrieveOrder(searchParameter, Value):
     for order in orders:
         if searchParameter == 'order_id':
-            if Value < 0:
+            if int(Value) < 0:
                 #Does not allow for a value ID of less than zero
                 return (False, 'Error: Value can not be below zero')
                 #Returns tuple, the false is for identifying when there is an error string
