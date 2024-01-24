@@ -18,13 +18,19 @@ def search():
    output = retrieve.retrieveOrder(currentSearchBy.get(), searchVal) #searchParameter, Value)
    # print(currentSearchBy.get())
    print(output)
-   # labelOutput.config(text=output)
+   labelOutput.config(text=output)
 
-   # if output[0] == 0
+   # for order in output:
+   # if output[0] == False:
+   #    labelOutput.config(text="ERROR in input")
+   # else:
+   #    labelOutput.config(text=output)
+   #    for key, value in output.items():
+   #      print(key)
+   #      print(value)
 
    food_delivery.insert(parent='',index='end',iid=0,text='',
    values=('1','05-01-2023','101','Burger Bisto', '61340', 'BN2 9US', '16675', 'Classic Cheeseburger', '7.99', '92493', 'Sweet Potato Fries', '3.99', '11,98', 'BN2 5EF', '072442766728', '05-01-2023T19:45:00', '12'))
-   food_delivery.redraw()
 
 
 
@@ -42,7 +48,7 @@ entrySearchVal = Entry(main)
 
 buttonSearch = Button(main, text='Search', command=search)
 
-labelOutput = Label(main, text='no output yet', wraplength=1000)
+labelOutput = Label(main, text='no errors', wraplength=1000)
 
 labelSearchBy.grid(row=0, column=0, sticky=W, pady=4)
 labelSearchVal.grid(row=1, column=0, sticky=W, pady=4)
