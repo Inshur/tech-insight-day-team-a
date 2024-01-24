@@ -55,4 +55,3 @@ def retrieveOrder(searchParameter, Value):
 
 
 #Tests
-print(retrieveOrder('order_id', 1))
