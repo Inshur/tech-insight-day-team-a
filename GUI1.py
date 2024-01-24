@@ -10,7 +10,7 @@ l2 = Label(main, text='Search val:')
 e1 = Entry(main)
 e2 = Entry(main)
 
-b1 = Button(main, text='Search')
+b1 = Button(main, text='Search', command= get_value)
 
 l1.grid(row=0, column=0, sticky=W, pady=4)
 l2.grid(row=1, column=0, sticky=W, pady=4)
