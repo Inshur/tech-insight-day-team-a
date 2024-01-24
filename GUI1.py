@@ -93,5 +93,6 @@ values=('5','CrissCross','105','California', 'San Diego'))
 food_delivery.insert(parent='',index='end',iid=5,text='',
 values=('6','ZaqueriBlack','106','Wisconsin' , 'TONY'))
 
-food_delivery.grid(row= 5, column= 0, columnspan=10)
+food_delivery.grid(row= 5, column= 0, rowspan=3)
 main.mainloop()
+

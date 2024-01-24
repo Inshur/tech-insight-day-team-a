@@ -12,8 +12,7 @@ orders = response.json()
 orders = orders['data']
 #Takes the successful orders from the JSON file and adds them to a dictionary
 
-possibleSearches = ['order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number']
-#List of possible searches, not used in the code at all mainly for frontend
+possibleSearches = ['order_id', 'date', 'restaurant', 'postcode', 'contact_number', 'house_number', 'dish_id']
 
 #Searched_orders the list that contains all orders that match the search criteria
 searched_orders = []
@@ -21,7 +20,7 @@ searched_orders = []
 def retrieveOrder(searchParameter, Value):
     for order in orders:
         if searchParameter == 'order_id':
-            if Value < 0:
+            if int(Value) < 0:
                 #Does not allow for a value ID of less than zero
                 return (False, 'Error: Value can not be below zero')
                 #Returns tuple, the false is for identifying when there is an error string
@@ -48,6 +47,10 @@ def retrieveOrder(searchParameter, Value):
             address = order.get('delivery')
             if Value.lower() in address.get('house_number'):
                 searched_orders.append('delivery')
+        elif searchParameter == 'dish_id':
+            address = order.get('delivery')
+            if Value.lower() in address.get('dish_id'):
+                searched_orders.append.get('dish_id')
         else:
             return (False, 'Error: Cannoy be found within data')
     return (True, searched_orders)
@@ -59,3 +62,4 @@ def retrieveOrder(searchParameter, Value):
 print(retrieveOrder('restaurant', 'Burger Bistro'))
 print(retrieveOrder('order_id', 8))
 print(retrieveOrder('postcode', "BN2 5EF"))
+print(retrieveOrder('dish_id', '13123'))
