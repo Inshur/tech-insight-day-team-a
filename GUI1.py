@@ -25,7 +25,7 @@ def search():
     else:
         for order in output[1]:
             food_delivery.insert(parent='',index='end',iid=0,text='',
-            values=('1',order.get('date'),'101','Burger Bisto', '61340', 'BN2 9US', '16675', 'Classic Cheeseburger', '7.99', '92493', 'Sweet Potato Fries', '3.99', '11,98', 'BN2 5EF', '072442766728', '05-01-2023T19:45:00', '12'))
+            values=(order.get('order_id'),order.get('date'),'101','Burger Bisto', '61340', 'BN2 9US', '16675', 'Classic Cheeseburger', '7.99', '92493', 'Sweet Potato Fries', '3.99', '11,98', 'BN2 5EF', '072442766728', '05-01-2023T19:45:00', '12'))
 
 
 
