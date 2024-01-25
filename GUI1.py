@@ -14,23 +14,18 @@ def callback(selection):
     searchBy = selection
 
 def search():
-   searchVal=entrySearchVal.get()
-   output = retrieve.retrieveOrder(currentSearchBy.get(), searchVal) #searchParameter, Value)
-   # print(currentSearchBy.get())
-   print(output)
-   labelOutput.config(text=output)
-
-   # for order in output:
-   # if output[0] == False:
-   #    labelOutput.config(text="ERROR in input")
-   # else:
-   #    labelOutput.config(text=output)
-   #    for key, value in output.items():
-   #      print(key)
-   #      print(value)
-
-   food_delivery.insert(parent='',index='end',iid=0,text='',
-   values=('1','05-01-2023','101','Burger Bisto', '61340', 'BN2 9US', '16675', 'Classic Cheeseburger', '7.99', '92493', 'Sweet Potato Fries', '3.99', '11,98', 'BN2 5EF', '072442766728', '05-01-2023T19:45:00', '12'))
+    searchVal=entrySearchVal.get()
+    output = retrieve.retrieveOrder(currentSearchBy.get(), searchVal) #searchParameter, Value)
+    # print(currentSearchBy.get())
+    print(output)
+    labelOutput.config(text=output)
+    
+    if output[0] == False:
+       labelOutput.config(text=output[1])
+    else:
+        for order in output[1]:
+            food_delivery.insert(parent='',index='end',iid=0,text='',
+            values=('1',order.get('date'),'101','Burger Bisto', '61340', 'BN2 9US', '16675', 'Classic Cheeseburger', '7.99', '92493', 'Sweet Potato Fries', '3.99', '11,98', 'BN2 5EF', '072442766728', '05-01-2023T19:45:00', '12'))
 
 
 
